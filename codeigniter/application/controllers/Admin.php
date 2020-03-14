@@ -21,9 +21,12 @@
         {
             $email = $this->input->post('loginEmail');
             $password = $this->input->post('loginPassword');
-            
+        }
 
-
+        public function register()
+        {
+            $this->load->view('template/header');
+            $this->load->view('template/footer');
         }
 
     }

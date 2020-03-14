@@ -6,7 +6,7 @@
     {
         public function tampilSapi()
         {
-            return $this->db->get('sapi');
+            return $this->db->get('tb_sapi');
         }
     }
 
