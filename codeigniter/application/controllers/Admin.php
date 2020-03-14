@@ -12,14 +12,7 @@
 
         public function index()
         {
-            $this->load->view('template/header');
-            $this->load->view('pages/login');
-            $this->load->view('template/footer');
-        }
-
-        public function cek_login()
-        {
-            echo "Cek Login";
+            
         }
 
     }
