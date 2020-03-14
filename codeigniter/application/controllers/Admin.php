@@ -17,6 +17,15 @@
             $this->load->view('template/footer');
         }
 
+        public function cekLogin()
+        {
+            $email = $this->input->post('loginEmail');
+            $password = $this->input->post('loginPassword');
+
+            
+
+        }
+
     }
 
 ?>
