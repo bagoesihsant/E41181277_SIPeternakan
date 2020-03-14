@@ -21,8 +21,8 @@
         {
             $email = $this->input->post('loginEmail');
             $password = $this->input->post('loginPassword');
-
             
+
 
         }
 
