@@ -30,6 +30,14 @@
             $this->load->view('template/footer');
         }
 
+        public function registerUser()
+        {
+            
+            //Melakukan validasi form
+            
+
+        }
+
     }
 
 ?>
