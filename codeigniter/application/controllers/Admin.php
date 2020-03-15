@@ -45,7 +45,25 @@
                 $email = $this->input->post('loginEmail');
                 $password = $this->input->post('loginPassword');
 
+                //Membuat parameter untuk model
+                $where = array(
+                    'email' => $email,
+                    'password' => md5($password)
+                );
+
+                //Mengambil data dari database
+                $hasilLogin = $this->m_admin->loginUser($where,'tb_user')->num_rows();
                 
+                if($hasilLogin > 0)
+                {
+                    $detailLogin = $this->m_admin->loginUser($where,'tb_user')->result();
+
+                    print_r($detailLogin);
+
+                }else
+                {
+                    redirect('admin/login/userNotFound');
+                }
 
             }
 
