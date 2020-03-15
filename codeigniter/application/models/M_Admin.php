@@ -22,7 +22,13 @@
 
         public function registerUser($data,$table)
         {
-            $this->db->insert($table,$data);
+            return $this->db->insert($table,$data);
+        }
+
+        public function loginUser($where,$table)
+        {
+            $this->db->where($where);
+            return $this->db->get($table);
         }
 
     }

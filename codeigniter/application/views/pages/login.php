@@ -20,9 +20,11 @@
                   <form class="user" method="post" action="<?php echo base_url('admin/cekLogin');?>">
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" name="loginEmail" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <?php echo form_error('loginEmail','<p class="text-center text-danger mt-2" style="font-size: 12px;">','</p>');?>
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" name="loginPassword" id="loginPassword" placeholder="Password">
+                      <?php echo form_error('loginPassword','<p class="text-center text-danger mt-2" style="font-size: 12px;">','</p>');?>
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
