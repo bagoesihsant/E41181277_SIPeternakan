@@ -234,7 +234,7 @@
             );
 
             $this->load->view('template/header');
-            $this->load->view('pages/data_sapi.php');
+            $this->load->view('pages/data_sapi.php',$data);
             $this->load->view('template/footer');
 
         }
