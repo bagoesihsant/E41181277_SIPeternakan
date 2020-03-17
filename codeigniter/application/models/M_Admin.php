@@ -9,9 +9,46 @@
             return $this->db->get('tb_sapi');
         }
 
+        public function tampilSapiSakit()
+        {
+            $data = array(
+                'status_kesehatan' => 'Sakit',
+                'status_kesehatan' => 'Karantina'
+            );
+            $this->db->where($data);
+            return $this->db->get('tb_sapi');
+        }
+
+        public function tampilSapiPreview()
+        {
+            $this->db->limit(5);
+            return $this->db->get('tb_sapi');
+        }
+
         public function tampilUser()
         {
             return $this->db->get('tb_user');
+        }
+
+        public function tampilKandang()
+        {
+            return $this->db->get('tb_kandang');
+        }
+
+        public function tampilKandangRusak()
+        {
+            $data = array(
+                'kondisi_kandang' => 'Rusak',
+                'kondisi_kandang' => 'Kotor'
+            );
+            $this->db->where($data);
+            return $this->db->get('tb_kandang');
+        }
+
+        public function tampilKandangPreview()
+        {
+            $this->db->limit(5);
+            return $this->db->get('tb_kandang');
         }
 
         public function tampilUserTerakhir()

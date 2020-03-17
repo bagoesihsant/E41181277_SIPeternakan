@@ -48,7 +48,8 @@
                 //Membuat parameter untuk model
                 $where = array(
                     'email' => $email,
-                    'password' => md5($password)
+                    'password' => md5($password),
+                    'status' => 1
                 );
 
                 //Mengambil data dari database
@@ -58,7 +59,20 @@
                 {
                     $detailLogin = $this->m_admin->loginUser($where,'tb_user')->result();
 
-                    print_r($detailLogin);
+                    foreach($detailLogin as $row)
+                    {
+                        $data_session = array(
+                            'nama_depan' => $row->nama_depan,
+                            'nama_belakang' => $row->nama_belakang,
+                            'email' => $row->email,
+                            'statusLogin' => true
+                        );
+
+                        $this->session->set_userdata($data_session);
+
+                        redirect('admin/home');
+
+                    }
 
                 }else
                 {
@@ -179,6 +193,54 @@
                 }
 
             }
+
+        }
+
+        public function home()
+        {
+            $jumlahSapiSehat = $this->m_admin->tampilSapi()->num_rows();
+            $jumlahSapiSakit = $this->m_admin->tampilSapiSakit()->num_rows();
+            $jumlahKandangBagus = $this->m_admin->tampilKandang()->num_rows();
+            $jumlahKandangRusak = $this->m_admin->tampilKandangRusak()->num_rows();
+            $previewKandang = $this->m_admin->tampilKandangPreview()->result();
+            $previewSapi = $this->m_admin->tampilSapiPreview()->result();
+
+            $data = array(
+                'jumlah_sapi_sehat' => $jumlahSapiSehat,
+                'jumlah_sapi_sakit' => $jumlahSapiSakit,
+                'jumlah_kandang_bagus' => $jumlahKandangBagus,
+                'jumlah_kandang_rusak' => $jumlahKandangRusak,
+                'preview_sapi' => $previewSapi,
+                'preview_kandang' => $previewKandang
+            );
+
+            $this->load->view('template/header');
+            $this->load->view('pages/home',$data);
+            $this->load->view('template/footer');
+        }
+
+        public function logout()
+        {
+            $this->session->sess_destroy();
+            redirect('admin/login');
+        }
+
+        public function masterSapi()
+        {
+            $dataSapi = $this->m_admin->tampilSapi()->result();
+
+            $data = array(
+                'data_sapi' => $dataSapi
+            );
+
+            $this->load->view('template/header');
+            $this->load->view('pages/data_sapi.php');
+            $this->load->view('template/footer');
+
+        }
+
+        public function masterKandang()
+        {
 
         }
 
