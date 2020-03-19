@@ -377,6 +377,24 @@
                                       <th> Kondisi Kandang </th>
                                   </tr>
                               </thead>
+                              <tbody>
+                                  <?php
+                                      $no_urut_kandang = 1;
+                                      foreach($preview_kandang as $rowKandang)
+                                      {
+                                        ?>
+                                            <tr>
+                                                <td> <?php echo $no_urut_kandang; ?> </td>
+                                                <td> <?php echo $rowKandang->id_kandang;?> </td>
+                                                <td> <?php echo $rowKandang->luas;?> </td>
+                                                <td> <?php echo $rowKandang->jumlah_tampung;?> </td>
+                                                <td> <?php echo $rowKandang->kondisi_kandang;?> </td>
+                                            </tr>
+                                        <?php
+                                        $no_urut_kandang++;
+                                      }
+                                  ?>
+                              </tbody>
                           </table>
                       </div>
                   </div>
