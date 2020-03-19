@@ -68,6 +68,11 @@
             return $this->db->get($table);
         }
 
+        public function tambahSapi($data,$table)
+        {
+            return $this->db->insert($table,$data);
+        }
+
         public function updateSapi($data,$where,$table)
         {
             $this->db->where($where);

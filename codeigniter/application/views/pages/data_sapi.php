@@ -357,6 +357,23 @@
 
 
   <!-- Tambah Sapi Modal -->
+  <?php
+    $idSapiLama = $row->id_sapi;
+    $idSapiBaru = intval(substr($idSapiLama,2));
+
+    if(strlen($idSapiBaru) == 1)
+    {
+      $idSapiBaru = 'SP00'.($idSapiBaru+1);
+    }else if(strlen($idSapiBaru) == 2)
+    {
+      $idSapiBaru = 'SP0'.($idSapiBaru+1);
+    }else if(strlen($idSapiBaru) == 3)
+    {
+      $idSapiBaru = 'SP'.($idSapiBaru+1);
+    }
+
+    
+  ?>
   <div class="modal fade" id="tambahModalSapi" tabindex="-1" role="dialog" aria-labelledby="tambahModalSapiTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -366,11 +383,74 @@
                   <span aria-hidden="true">x</span>
               </button>
             </div>
-            <div class="modal-body"> Untuk tambah sapi. </div>
-            <div class="modal-footer">
-              <button class="btn btn-outline-secondary" type="button" data-dismiss="modal"> Cancel </button>
-              <button type="submit" class="btn btn-primary" name="tambahSapiButton" id="tambahSapiButton"> Simpan </button>
-            </div>
+            <form action="<?php echo base_url('admin/tambahSapi')?>" method="post">
+              <div class="modal-body">
+                  <div class="form-group">
+                      <label for="idSapiTambah"> ID Sapi </label>
+                      <input type="text" name="idSapiTambah" id="idSapiTambah" class="form-control w-25" value="<?php echo $idSapiBaru;?>" readonly>
+                  </div>
+                  <div class="form-group">
+                      <label for="jenisSapiTambah"> Jenis Sapi </label>
+                      <select name="jenisSapiTambah" id="jenisSapiTambah" class="custom-select">
+                        <option value="Brahman">Brahman</option>
+                        <option value="Beefalo">Beefalo</option>
+                        <option value="Limousin">Limousin</option>
+                        <option value="Angus">Angus</option>
+                        <option value="Brangus">Brangus</option>
+                        <option value="Hereford">Hereford</option>
+                        <option value="Braford">Braford</option>
+                        <option value="Madura">Madura</option>
+                        <option value="Bali">Bali</option>
+                      </select>
+                      <?php echo form_error('jenisSapiTambah','<p class="text-center text-danger mt-2" style="font-size: 12px;">','</p>');?>
+                  </div>
+                  <div class="form-group">
+                    <label for="beratSapiTambah"> Berat Sapi </label>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <input type="number" name="beratSapiTambah" id="beratSapiTambah" class="form-control" placeholder="0">
+                        <?php echo form_error('beratSapiTambah','<p class="text-center text-danger mt-2" style="font-size: 12px;">','</p>');?>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <p class="text-form"> Kg </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="jkSapiTambah"> Jenis Kelamin </label>
+                    <select name="jkSapiTambah" id="jkSapiTambah" class="custom-select">
+                      <option value="Laki - Laki"> Laki - Laki </option>
+                      <option value="Perempuan"> Perempuan </option>
+                    </select>
+                    <?php echo form_error('jkSapiTambah','<p class="text-center text-danger mt-2" style="font-size: 12px;">','</p>');?>
+                  </div>
+                  <div class="form-group">
+                    <label for="usiaSapiTambah"> Usia Sapi </label>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <input type="number" name="usiaSapiTambah" id="usiaSapitambah" class="form-control" placeholder="0">
+                        <?php echo form_error('usiaSapiTambah','<p class="text-center text-danger mt-2" style="font-size: 12px;">','</p>');?>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <p class="text-form"> Tahun </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="statusSapiTambah"> Jenis Kelamin </label>
+                    <select name="statusSapiTambah" id="statusSapiTambah" class="custom-select">
+                      <option value="Sehat">Sehat</option>
+                      <option value="Sakit">Sakit</option>
+                      <option value="Karantina">Karantina</option>
+                    </select>
+                    <?php echo form_error('statusSapiTambah','<p class="text-center text-danger mt-2" style="font-size: 12px;">','</p>');?>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-outline-secondary" type="button" data-dismiss="modal"> Cancel </button>
+                <button type="submit" class="btn btn-primary" name="tambahSapiButton" id="tambahSapiButton"> Simpan </button>
+              </div>
+            </form>
         </div>
       </div>
   </div>

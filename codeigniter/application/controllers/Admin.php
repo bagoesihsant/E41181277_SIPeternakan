@@ -239,6 +239,59 @@
 
         }
 
+        public function tambahSapi()
+        {
+            //Melakukan validasi form
+            //Membuat aturan validasi
+
+            $this->form_validation->set_rules('jenisSapiTambah','Jenis Sapi','trim|required');
+            $this->form_validation->set_rules('beratSapiTambah','Berat Sapi','trim|required');
+            $this->form_validation->set_rules('jkSapiTambah','Jenis Kelamin','trim|required');
+            $this->form_validation->set_rules('usiaSapiTambah','Usia Sapi','trim|required');
+            $this->form_validation->set_rules('statusSapiTambah','Status Sapi','trim|required');
+
+            //Membuat pesan untuk hasil validasi form apabila salah
+            $this->form_validation->set_message('required','Kolom %s tidak boleh kosong.');
+            $this->form_validation->set_message('trim','Kolom %s mengandung karakter yang dilarang.');
+
+            //Menjalankan validasi form
+            if($this->form_validation->run() == false)
+            {
+                $this->masterSapi();
+            }else
+            {
+                //Menyimpan data kedalam variabel
+                $idSapi = $this->input->post('idSapiTambah');
+                $jenisSapi = $this->input->post('jenisSapiTambah');
+                $beratSapi = $this->input->post('beratSapiTambah');
+                $jkSapi = $this->input->post('jkSapiTambah');
+                $usiaSapi = $this->input->post('usiaSapiTambah');
+                $statusSapi = $this->input->post('statusSapiTambah');
+
+                //Membuat array berisikan data data
+                $data = array(
+                    'id_sapi' => $idSapi,
+                    'jenis' => $jenisSapi,
+                    'berat' => $beratSapi,
+                    'jenis_kelamin' => $jkSapi,
+                    'usia' => $usiaSapi,
+                    'status_kesehatan' => $statusSapi
+                );
+
+                $hasilInsert = $this->m_admin->tambahSapi($data,'tb_sapi');
+
+                if($hasilInsert)
+                {
+                    redirect('admin/masterSapi');
+                }else
+                {
+                    redirect('admin/masterSapi/Error');
+                }
+
+            }
+
+        }
+
         public function ubahSapi()
         {
 
