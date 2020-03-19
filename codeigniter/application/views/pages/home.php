@@ -341,6 +341,23 @@
                                       <th> Status Kesehatan </th>
                                   </tr>
                               </thead>
+                              <tbody>
+                              <?php
+                                  $no_urut = 1;
+                                  foreach($preview_sapi as $rowSapi)
+                                  {
+                                    ?>
+                                      <tr>
+                                        <td> <?php echo $no_urut++;?> </td>
+                                        <td> <?php echo $rowSapi->id_sapi;?> </td>
+                                        <td> <?php echo $rowSapi->jenis;?> </td>
+                                        <td> <?php echo $rowSapi->berat;?> </td>
+                                        <td> <?php echo $rowSapi->status_kesehatan;?> </td>
+                                      </tr>
+                                    <?php
+                                  }                              
+                              ?>
+                              </tbody>
                           </table>
                       </div>
                   </div>

@@ -68,6 +68,18 @@
             return $this->db->get($table);
         }
 
+        public function updateSapi($data,$where,$table)
+        {
+            $this->db->where($where);
+            return $this->db->update($table,$data);
+        }
+
+        public function hapusSapi($where,$table)
+        {
+            $this->db->where($where);
+            return $this->db->delete($table);
+        }   
+
     }
 
 ?>

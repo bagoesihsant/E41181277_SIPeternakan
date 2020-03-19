@@ -247,7 +247,7 @@
             <!-- Option Button -->
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-xs-12">
-                    <a href="<?php echo base_url('admin/tambahSapi');?>" class="btn btn-success text-white w-100">Tambah</a>
+                    <button class="btn btn-success text-white w-100" data-toggle="modal" data-target="#tambahModalSapi"> Tambah </button>
                 </div>
             </div>
 
@@ -289,7 +289,7 @@
                                                                 </button>
                                                             </div>
                                                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                                                <button class="btn btn-danger text-white w-100">
+                                                                <button class="btn btn-danger text-white w-100" data-toggle="modal" data-target="#hapusModalSapi<?php echo $no_urut;?>">
                                                                     <i class="far fa-trash-alt text-white"></i>
                                                                     <span>Hapus</span>
                                                                 </button>
@@ -355,6 +355,56 @@
     </div>
   </div>
 
+
+  <!-- Tambah Sapi Modal -->
+  <div class="modal fade" id="tambahModalSapi" tabindex="-1" role="dialog" aria-labelledby="tambahModalSapiTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="tambahModalSapiTitle"> Tambah Data </h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="close">
+                  <span aria-hidden="true">x</span>
+              </button>
+            </div>
+            <div class="modal-body"> Untuk tambah sapi. </div>
+            <div class="modal-footer">
+              <button class="btn btn-outline-secondary" type="button" data-dismiss="modal"> Cancel </button>
+              <button type="submit" class="btn btn-primary" name="tambahSapiButton" id="tambahSapiButton"> Simpan </button>
+            </div>
+        </div>
+      </div>
+  </div>
+
+  <!-- Hapus Sapi Modal -->
+  <?php
+  
+      $no_urut_hapus = 1;
+      foreach($data_sapi as $rowHapusSapi)
+      {
+        ?>
+          <div class="modal fade" id="hapusModalSapi<?php echo $no_urut_hapus;?>" tabindex="-1" role="dialog" aria-labelledby="hapusModalSapiTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="hapusModalSapiTitle">Notifikasi</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body">Apakah anda yakin menghapus data ini ?.</div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-danger" href="<?php echo base_url('admin/hapusSapi/'.$rowHapusSapi->id_sapi);?>">Hapus</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php
+        $no_urut_hapus++;
+      }
+  
+  ?>
+
    <!-- Ubah Sapi Modal -->
    <?php
 
@@ -375,7 +425,7 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="idSapi"> ID Sapi </label>
-                                    <input type="text" name="idSapi" class="form-control w-25 text-center" id="idSapi" value="<?php echo $rowFormUbah->id_sapi;?>" disabled >
+                                    <input type="text" name="idSapi" class="form-control w-25 text-center" id="idSapi" value="<?php echo $rowFormUbah->id_sapi;?>" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="jenisSapi"></label>
@@ -511,6 +561,7 @@
                                             }
                                         ?>
                                     </select>
+                                    <?php echo form_error('jenisSapi','<p class="text-center text-danger mt-2" style="font-size: 12px;">','</p>');?>
                                 </div>
                                 <div class="form-group">
                                     <label for="jkSapi"> Jenis Kelamin </label>
@@ -534,15 +585,29 @@
                                             }                                        
                                         ?>
                                     </select>
+                                    <?php echo form_error('jkSapi','<p class="text-center text-danger mt-2" style="font-size: 12px;">','</p>');?>
                                 </div>
                                 <div class="form-group">
                                     <label for="usiaSapi"> Usia Sapi </label>
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-xs-12">
                                             <input type="number" name="usiaSapi" id="usiaSapi" class="form-control w-100 text-center" value="<?php echo $rowFormUbah->usia;?>">
+                                            <?php echo form_error('usiaSapi','<p class="text-center text-danger mt-2" style="font-size: 12px;">','</p>');?>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-xs-12">
                                             <p class="form-text"> Tahun </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="beratSapi"> Berat Sapi </label>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-xs-12">
+                                            <input type="number" name="beratSapi" id="beratSapi" class="form-control w-100 text-center" value="<?php echo $rowFormUbah->berat;?>">
+                                            <?php echo form_error('beratSapi','<p class="text-center text-danger mt-2" style="font-size: 12px;">','</p>');?>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-xs-12">
+                                            <p class="form-text"> Kg </p>
                                         </div>
                                     </div>
                                 </div>
@@ -578,6 +643,7 @@
                                             }                                        
                                         ?>
                                     </select>
+                                    <?php echo form_error('statusSapi','<p class="text-center text-danger mt-2" style="font-size: 12px;">','</p>');?>
                                 </div>
                             </div>
                             <div class="modal-footer">

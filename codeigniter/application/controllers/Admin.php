@@ -239,6 +239,80 @@
 
         }
 
+        public function ubahSapi()
+        {
+
+            //Melakukan validasi form
+            //Membuat aturan validasi
+            $this->form_validation->set_rules('jenisSapi','Jenis Sapi','required|trim');
+            $this->form_validation->set_rules('jkSapi','Jenis Kelamin Sapi','required|trim');
+            $this->form_validation->set_rules('usiaSapi','Usia Sapi','required|trim');
+            $this->form_validation->set_rules('beratSapi','Berat Sapi','required|trim');
+            $this->form_validation->set_rules('statusSapi','Status Sapi','required|trim');
+
+            //Membuat pesan untuk hasil validasi form apabila salah
+            $this->form_validation->set_message('required','Kolom %s tidak boleh kosong.');
+            $this->form_validation->set_message('trim','Kolom %s mengandung karakter yang dilarang.');
+
+            //Menjalankan validasi form
+            if($this->form_validation->run() == false)
+            {
+                $this->masterSapi();
+            }else
+            {
+                //Menyimpan data yang dikirim melalui form
+                $idSapi = $this->input->post('idSapi');
+                $jenisSapi = $this->input->post('jenisSapi');
+                $jkSapi = $this->input->post('jkSapi');
+                $usiaSapi = $this->input->post('usiaSapi');
+                $beratSapi = $this->input->post('beratSapi');
+                $statusSapi = $this->input->post('statusSapi');
+
+                $data = array(
+                    'jenis' => $jenisSapi,
+                    'berat' => $beratSapi,
+                    'jenis_kelamin' => $jkSapi,
+                    'usia' => $usiaSapi,
+                    'status_kesehatan' => $statusSapi
+                );
+
+                $where = array(
+                    'id_sapi' => $idSapi
+                );
+
+                $hasilUpdate = $this->m_admin->updateSapi($data,$where,'tb_sapi');
+
+                if($hasilUpdate)
+                {
+                    redirect('admin/masterSapi');
+                }else
+                {
+                    redirect('admin/masterSapi/Error');
+                }
+
+            }
+
+
+        }
+
+        public function hapusSapi($id)
+        {
+            $where = array(
+                'id_sapi' => $id
+            );
+
+            $hasilHapus = $this->m_admin->hapusSapi($where,'tb_sapi');
+
+            if($hasilHapus)
+            {
+                redirect('admin/masterSapi');
+            }else
+            {
+                redirect('admin/masterSapi/Error');
+            }
+
+        }
+
         public function masterKandang()
         {
 
