@@ -437,7 +437,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="statusSapiTambah"> Jenis Kelamin </label>
+                    <label for="statusSapiTambah"> Status Sapi </label>
                     <select name="statusSapiTambah" id="statusSapiTambah" class="custom-select">
                       <option value="Sehat">Sehat</option>
                       <option value="Sakit">Sakit</option>
@@ -692,7 +692,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="statusSapi"></label>
+                                    <label for="statusSapi"> Status Sapi </label>
                                     <select name="statusSapi" id="statusSapi" class="custom-select">
                                         <?php
                                             switch($rowFormUbah->status_kesehatan)

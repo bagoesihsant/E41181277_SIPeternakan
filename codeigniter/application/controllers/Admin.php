@@ -368,6 +368,125 @@
 
         public function masterKandang()
         {
+            $dataKandang = $this->m_admin->tampilKandang()->result();
+
+            $data = array(
+                'data_kandang' => $dataKandang
+            );
+
+            $this->load->view('template/header');
+            $this->load->view('pages/data_kandang',$data);
+            $this->load->view('template/footer');
+
+        }
+
+        public function tambahKandang()
+        {
+            //Menjalankan validasi form
+            //Membuat aturan validasi form
+            $this->form_validation->set_rules('jumlahTampungTambah','Jumlah Tampung','trim|required');
+            $this->form_validation->set_rules('luasKandangTambah','Luas Kandang','trim|required');
+            $this->form_validation->set_rules('kondisiKandangTambah','Kondisi Kandang','trim|required');
+
+            //Membuat pesan validasi form
+            $this->form_validation->set_message('required','Kolom %s tidak boleh kosong.');
+            $this->form_validation->set_message('trim','Kolom %s mengandung karakter yang dilarang.');
+
+            //Menjalan form_validation
+            if($this->form_validation->run() == false)
+            {
+                $this->masterKandang();
+            }else
+            {
+                //Menyimpan data kedalam variabel
+                $idKandang = $this->input->post('idKandangTambah');
+                $jumlahTampung = $this->input->post('jumlahTampungTambah');
+                $luasKandang = $this->input->post('luasKandangTambah');
+                $kondisiKandang = $this->input->post('kondisiKandangTambah');
+
+                $data = array(
+                    'id_kandang' => $idKandang,
+                    'jumlah_tampung' => $jumlahTampung,
+                    'luas' => $luasKandang,
+                    'kondisi_kandang' => $kondisiKandang
+                );
+
+                $hasilInsert = $this->m_admin->tambahKandang($data,'tb_kandang');
+
+                if($hasilInsert)
+                {
+                    redirect('admin/masterKandang');
+                }else
+                {
+                    redirect('admin/masterKandang/Error');
+                }
+
+            }
+        }
+
+        public function hapusKandang($id_kandang)
+        {
+            $where = array(
+                'id_kandang' => $id_kandang
+            );
+
+            $hasilHapus = $this->m_admin->hapusKandang($where,'tb_kandang');
+
+            if($hasilHapus)
+            {
+                redirect('admin/masterKandang');
+            }else
+            {
+                redirect('admin/masterKandang/Error');
+            }
+
+        }
+
+        public function ubahKandang()
+        {
+            //Membuat validasi form
+            //Membuat peraturan validasi form
+            $this->form_validation->set_rules('jumlahTampung','Jumlah Tampung','trim|required');
+            $this->form_validation->set_rules('luasKandang','Luas Kandang','trim|required');
+            $this->form_validation->set_rules('kondisiKandang','Kondisi Kandang','trim|required');
+
+            //Membuat pesan kustom
+            $this->form_validation->set_message('required','Kolom %s tidak boleh kosong.');
+            $this->form_validation->set_message('trim','Kolom %s mengandung karakter yang dilarang.');
+
+            //Menjalankan form_validation
+            if($this->form_validation->run() == false)
+            {
+                $this->masterKandang();
+            }else
+            {
+                //Menyimpan nilai kedalam variabel
+                $idKandang = $this->input->post('idKandang');
+                $jumlahTampung = $this->input->post('jumlahTampung');
+                $luasKandang = $this->input->post('luasKandang');
+                $kondisiKandang = $this->input->post('kondisiKandang');
+
+                $where = array(
+                    'id_kandang' => $idKandang
+                );
+
+                $data = array(
+                    'jumlah_tampung' => $jumlahTampung,
+                    'luas' => $luasKandang,
+                    'kondisi_kandang' => $kondisiKandang
+                );
+
+                $hasilUpdate = $this->m_admin->ubahKandang($data,$where,'tb_kandang');
+
+                if($hasilUpdate)
+                {
+                    redirect('admin/masterKandang');
+                }else
+                {
+                    redirect('admin/masterKandang/Error');
+                }
+
+            }
 
         }
 

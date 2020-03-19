@@ -83,7 +83,24 @@
         {
             $this->db->where($where);
             return $this->db->delete($table);
-        }   
+        }
+        
+        public function tambahKandang($data,$table)
+        {
+            return $this->db->insert($table,$data);
+        }
+
+        public function hapusKandang($where,$table)
+        {
+            $this->db->where($where);
+            return $this->db->delete($table);
+        }
+
+        public function ubahKandang($data,$where,$table)
+        {
+            $this->db->where($where);
+            return $this->db->update($table,$data);
+        }
 
     }
 
