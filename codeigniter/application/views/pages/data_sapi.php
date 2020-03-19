@@ -383,7 +383,7 @@
                   <span aria-hidden="true">x</span>
               </button>
             </div>
-            <form action="<?php echo base_url('admin/tambahSapi')?>" method="post">
+            <form action="<?php echo base_url('admin/tambahSapi');?>" method="post">
               <div class="modal-body">
                   <div class="form-group">
                       <label for="idSapiTambah"> ID Sapi </label>
