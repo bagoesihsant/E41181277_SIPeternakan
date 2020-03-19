@@ -261,11 +261,11 @@
                                 <thead>
                                     <tr>
                                         <th> No. </th>
-                                        <th> ID Kandang </th>
-                                        <th> Jumlah Tampung </th>
-                                        <th> Luas </th>
-                                        <th> Kondisi Kandang </th>
-                                        <th> Action </th>
+                                        <th class="text-center"> ID Kandang </th>
+                                        <th class="text-center"> Kapasitas </th>
+                                        <th class="text-center"> Luas </th>
+                                        <th class="text-center"> Kondisi </th>
+                                        <th class="text-center"> Action </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -275,11 +275,11 @@
                                         {
                                             ?>
                                                 <tr>
-                                                    <td><?php echo $no_urut;?></td>
-                                                    <td><?php echo $row->id_kandang;?></td>
+                                                    <td><?php echo $no_urut.'.';?></td>
+                                                    <td class="text-center"><?php echo $row->id_kandang;?></td>
                                                     <td class="text-center"><?php echo $row->jumlah_tampung." Ekor";?></td>
-                                                    <td><?php echo $row->luas."m"?><sup>2</sup><?php;?></td>
-                                                    <td><?php echo $row->kondisi_kandang;?></td>
+                                                    <td class="text-center"><?php echo $row->luas."m"?><sup>2</sup><?php;?></td>
+                                                    <td class="text-center"><?php echo $row->kondisi_kandang;?></td>
                                                     <td>
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-6 col-sm-12">

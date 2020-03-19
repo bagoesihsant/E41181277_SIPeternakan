@@ -261,11 +261,11 @@
                                 <thead>
                                     <tr>
                                         <th> No. </th>
-                                        <th> ID Sapi </th>
-                                        <th> Jenis </th>
-                                        <th> Berat </th>
-                                        <th> Status Kesehatan </th>
-                                        <th> Action </th>
+                                        <th class="text-center"> ID Sapi </th>
+                                        <th class="text-center"> Jenis </th>
+                                        <th class="text-center"> Berat </th>
+                                        <th class="text-center"> Status </th>
+                                        <th class="text-center"> Action </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -275,11 +275,11 @@
                                         {
                                             ?>
                                                 <tr>
-                                                    <td><?php echo $no_urut;?></td>
-                                                    <td><?php echo $row->id_sapi;?></td>
-                                                    <td><?php echo $row->jenis;?></td>
-                                                    <td><?php echo $row->berat."kg";?></td>
-                                                    <td><?php echo $row->status_kesehatan;?></td>
+                                                    <td><?php echo $no_urut.'.';?></td>
+                                                    <td class="text-center"><?php echo $row->id_sapi;?></td>
+                                                    <td class="text-center"><?php echo $row->jenis;?></td>
+                                                    <td class="text-center"><?php echo $row->berat."kg";?></td>
+                                                    <td class="text-center"><?php echo $row->status_kesehatan;?></td>
                                                     <td>
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-6 col-sm-12">

@@ -19,7 +19,7 @@
     <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('admin/home');?>">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -335,10 +335,10 @@
                               <thead>
                                   <tr>
                                       <th> No. </th>
-                                      <th> ID Sapi </th>
-                                      <th> Jenis </th>
-                                      <th> Berat </th>
-                                      <th> Status Kesehatan </th>
+                                      <th class="text-center"> ID Sapi </th>
+                                      <th class="text-center"> Jenis </th>
+                                      <th class="text-center"> Berat </th>
+                                      <th class="text-center"> Status </th>
                                   </tr>
                               </thead>
                               <tbody>
@@ -348,13 +348,14 @@
                                   {
                                     ?>
                                       <tr>
-                                        <td> <?php echo $no_urut++;?> </td>
+                                        <td> <?php echo $no_urut.'.';?> </td>
                                         <td> <?php echo $rowSapi->id_sapi;?> </td>
-                                        <td> <?php echo $rowSapi->jenis;?> </td>
-                                        <td> <?php echo $rowSapi->berat;?> </td>
+                                        <td class="text-center"> <?php echo $rowSapi->jenis;?> </td>
+                                        <td class="text-center"> <?php echo $rowSapi->berat." Kg";?> </td>
                                         <td> <?php echo $rowSapi->status_kesehatan;?> </td>
                                       </tr>
                                     <?php
+                                    $no_urut++;
                                   }                              
                               ?>
                               </tbody>
@@ -371,10 +372,10 @@
                               <thead>
                                   <tr>
                                       <th> No. </th>
-                                      <th> ID Kandang </th>
-                                      <th> Luas </th>
-                                      <th> Jumlah Tampung </th>
-                                      <th> Kondisi Kandang </th>
+                                      <th class="text-center"> ID Kandang </th>
+                                      <th class="text-center"> Luas </th>
+                                      <th class="text-center"> Kapasitas </th>
+                                      <th class="text-center"> Kondisi </th>
                                   </tr>
                               </thead>
                               <tbody>
@@ -384,10 +385,10 @@
                                       {
                                         ?>
                                             <tr>
-                                                <td> <?php echo $no_urut_kandang; ?> </td>
+                                                <td> <?php echo $no_urut_kandang.'.'; ?> </td>
                                                 <td> <?php echo $rowKandang->id_kandang;?> </td>
-                                                <td> <?php echo $rowKandang->luas;?> </td>
-                                                <td> <?php echo $rowKandang->jumlah_tampung;?> </td>
+                                                <td class="text-center"> <?php echo $rowKandang->luas.'m'?><sup>2</sup><?php;?> </td>
+                                                <td class="text-center"> <?php echo $rowKandang->jumlah_tampung." Ekor";?> </td>
                                                 <td> <?php echo $rowKandang->kondisi_kandang;?> </td>
                                             </tr>
                                         <?php
