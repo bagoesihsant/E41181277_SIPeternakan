@@ -343,6 +343,7 @@
                               </thead>
                               <tbody>
                               <?php
+                                  //Perulangan untuk menampilkan data yang dikirim dari controller
                                   $no_urut = 1;
                                   foreach($preview_sapi as $rowSapi)
                                   {
@@ -380,6 +381,7 @@
                               </thead>
                               <tbody>
                                   <?php
+                                      //Perulangan untuk menampilkan data yang dikirim dari controller
                                       $no_urut_kandang = 1;
                                       foreach($preview_kandang as $rowKandang)
                                       {

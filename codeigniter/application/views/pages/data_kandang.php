@@ -270,6 +270,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
+                                        //Melakukan perulangan sebanyak jumlah data dari controller dan menampilkannya dalam bentuk tabel
                                         $no_urut = 1;
                                         foreach($data_kandang as $row)
                                         {
@@ -358,6 +359,7 @@
 
   <!-- Tambah Sapi Modal -->
   <?php
+    //Membuat Auto Increment otomatis berdasarkan ID sebelumnya
     $idKandangLama = $row->id_kandang;
     $idKandangBaru = intval(substr($idKandangLama,3));
 
@@ -436,6 +438,7 @@
   <!-- Hapus Sapi Modal -->
   <?php
   
+      //Melakukan perulangan untuk menghasilkan banyak modal untuk menghapus data sebanyak n data
       $no_urut_hapus = 1;
       foreach($data_kandang as $rowHapusKandang)
       {
@@ -465,7 +468,7 @@
 
    <!-- Ubah Sapi Modal -->
    <?php
-
+      //Melakukan perulangan untuk menghasilkan banyak modal untuk mengubah data sebanyak n data
        $no_urut_form = 1;
        foreach($data_kandang as $rowFormUbah)
        {

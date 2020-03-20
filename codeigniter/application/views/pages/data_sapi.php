@@ -270,6 +270,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
+                                      //Melakukan perulangan dari data yang dikirimkan oleh controller dalam bentuk tabel
                                         $no_urut = 1;
                                         foreach($data_sapi as $row)
                                         {
@@ -358,6 +359,7 @@
 
   <!-- Tambah Sapi Modal -->
   <?php
+    //Membuat Auto Increment otomatis berdasarkan id sebelumnya
     $idSapiLama = $row->id_sapi;
     $idSapiBaru = intval(substr($idSapiLama,2));
 
@@ -458,6 +460,7 @@
   <!-- Hapus Sapi Modal -->
   <?php
   
+      //Membuat perulangan berupa modal untuk menghapus data
       $no_urut_hapus = 1;
       foreach($data_sapi as $rowHapusSapi)
       {
@@ -488,6 +491,7 @@
    <!-- Ubah Sapi Modal -->
    <?php
 
+       //Membuat perulangan berupa modal untuk mengubah data
        $no_urut_form = 1;
        foreach($data_sapi as $rowFormUbah)
        {
